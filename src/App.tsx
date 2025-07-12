@@ -49,6 +49,7 @@ function App() {
   const [showAllFiles, setShowAllFiles] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const [accent, setAccent] = useState(() => localStorage.getItem('accentColor') || 'blue')
+  const [urlInputFocused, setUrlInputFocused] = useState(false)
   useEffect(() => { localStorage.setItem('accentColor', accent) }, [accent])
   const accentClasses = getAccentClasses(accent)
 
@@ -177,7 +178,7 @@ function App() {
     <>
       <div className={`min-h-screen w-full bg-gradient-to-b from-${accent}-950 via-${accent}-900 to-${accent}-700 flex flex-row`}>
         {/* Navbar at the very top */}
-        <div className="fixed top-0 left-0 w-full z-10">
+        <div className={`fixed top-0 left-0 w-full z-10 ${urlInputFocused ? 'sm:block hidden' : ''}`}>
           <nav className="w-full bg-white/10 backdrop-blur border-b border-white/20 py-6 px-4 flex items-center justify-center shadow-lg relative">
             <span className="text-white text-sm md:text-base font-sans font-semibold tracking-wide text-center">
               No content is hosted on this website. This is a tool to download files from a user-provided GitHub repository URL.
@@ -214,6 +215,8 @@ function App() {
                 onChange={handleInputChange}
                 onKeyDown={e => { if (e.key === 'Enter') handleDownload() }}
                 disabled={progress !== 'idle'}
+                onFocus={() => setUrlInputFocused(true)}
+                onBlur={() => setUrlInputFocused(false)}
               />
               <button
                 onClick={handleDownload}
