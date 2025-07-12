@@ -327,7 +327,7 @@ function App() {
       </div>
       {/* Mobile Info Overlay */}
       {showInfo && (
-        <div className={`lg:hidden fixed inset-0 z-40 bg-${accent}-950/95 bg-opacity-95 flex flex-col items-center justify-center px-4 py-8 animate-fadeinup`}>
+        <div className={`lg:hidden fixed inset-0 z-40 bg-${accent}-950 bg-opacity-100 flex flex-col items-center justify-center px-4 py-8 animate-fadeinup`}>
           <div className={`relative w-full max-w-md mx-auto bg-${accent}-900/95 text-white rounded-2xl px-6 py-6 shadow-2xl overflow-y-auto max-h-[90vh]`}>
             <button onClick={() => setShowInfo(false)} className={`absolute top-3 right-4 text-${accent}-200 hover:text-white text-2xl font-bold focus:outline-none`}>&times;</button>
             <div className="font-bold text-lg mb-3 text-center">About & Usage</div>
