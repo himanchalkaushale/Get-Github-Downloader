@@ -236,9 +236,9 @@ function App() {
               </div>
             )}
 
-            {/* Progress UI */}
-            {progress !== 'idle' && !error && (
-              <div className="w-full flex flex-col items-center mt-4">
+            {/* Progress UI (mobile only) */}
+            {progress !== 'idle' && !error && progress !== 'done' && (
+              <div className="block lg:hidden w-full flex flex-col items-center mt-4">
                 {(isGithubFileUrl(url) ? fileSteps : steps).map((step, idx) => (
                   <div key={step.key} className={`flex items-center gap-2 mb-2 ${progress === step.key ? 'font-bold text-white' : 'text-white/60'}`}> 
                     <span className="inline-block w-3 h-3 rounded-full mr-2" style={{ background: progress === step.key ? accentClasses.base === 'blue-700' ? '#60a5fa' : accentClasses.base === 'green-700' ? '#16a34a' : '#9333ea' : '#374151' }}></span>
