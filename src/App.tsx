@@ -366,20 +366,6 @@ function App() {
             GitHub
           </a>
         </span>
-        {/* Accent color picker in footer */}
-        <div className="flex items-center gap-2 mt-2 sm:mt-0 sm:ml-4">
-          {ACCENT_COLORS.map(c => (
-            <button
-              key={c.value}
-              aria-label={c.name}
-              className={`w-7 h-7 rounded-full border-2 ${accent === c.value ? 'border-white scale-110 ring-2 ring-white' : 'border-white/40'} transition-transform flex items-center justify-center`}
-              style={{ backgroundColor: `var(--tw-${c.classes.base.replace('-', '-')})` }}
-              onClick={() => setAccent(c.value)}
-            >
-              <span className="sr-only">{c.name}</span>
-            </button>
-          ))}
-        </div>
       </footer>
     </>
   )
