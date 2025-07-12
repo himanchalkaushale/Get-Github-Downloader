@@ -237,7 +237,7 @@ function App() {
             {progress !== 'idle' && !error && (
               <div className="w-full flex flex-col items-center mt-4">
                 {(isGithubFileUrl(url) ? fileSteps : steps).map((step, idx) => (
-                  <div key={step.key} className={`flex items-center gap-2 mb-2 ${progress === step.key ? `font-bold text-${accent}-200` : `text-${accent}-300/60`}`}> 
+                  <div key={step.key} className={`flex items-center gap-2 mb-2 ${progress === step.key ? 'font-bold text-white' : 'text-white/60'}`}> 
                     <span className="inline-block w-3 h-3 rounded-full mr-2" style={{ background: progress === step.key ? accentClasses.base === 'blue-700' ? '#60a5fa' : accentClasses.base === 'green-700' ? '#16a34a' : '#9333ea' : '#374151' }}></span>
                     {step.label}
                     {/* Show progress bar for zipping */}
@@ -250,7 +250,7 @@ function App() {
                       </span>
                     )}
                     {step.key === 'zipping' && progress === 'zipping' && zipProgress && (
-                      <span className={`ml-2 text-xs text-${accent}-100/80`}>{zipProgress.done}/{zipProgress.total}</span>
+                      <span className="ml-2 text-xs text-white/80">{zipProgress.done}/{zipProgress.total}</span>
                     )}
                   </div>
                 ))}
