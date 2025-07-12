@@ -327,11 +327,11 @@ function App() {
       </div>
       {/* Mobile Info Overlay */}
       {showInfo && (
-        <div className={`lg:hidden fixed inset-0 z-50 bg-${accent}-950 bg-opacity-100 flex items-center justify-center min-h-screen`}>
+        <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-100 flex items-center justify-center min-h-screen">
           <div className={`relative w-full max-w-md mx-auto bg-${accent}-900/95 text-white rounded-2xl px-6 py-6 shadow-2xl overflow-y-auto max-h-[90vh]`}>
             <button onClick={() => setShowInfo(false)} className={`absolute top-3 right-4 text-${accent}-200 hover:text-white text-2xl font-bold focus:outline-none`}>&times;</button>
-            <div className="font-bold text-lg mb-3 text-center">About & Usage</div>
-            <div className="mb-3 text-base">
+            <div className="font-bold text-lg mb-3 text-center text-white">About & Usage</div>
+            <div className="mb-3 text-base text-white">
               <p className="mb-2">This tool lets you download any public GitHub directory as a ZIP file, directly in your browser. No backend, no data stored.</p>
               <ul className="list-disc ml-6 text-white/90">
                 <li>Paste a GitHub folder URL</li>
@@ -342,7 +342,7 @@ function App() {
               </ul>
             </div>
             <div className="text-sm text-white/70 mb-4">No data is sent to any server. All processing is done in your browser.</div>
-            <div className="mb-3 text-base">
+            <div className="mb-3 text-base text-white">
               <div className="font-semibold mb-1">GitHub Token (optional):</div>
               <p className="mb-2">For large folders or private repos, you may need a GitHub personal access token. Paste it in the input as <span className="font-mono">https://TOKEN@github.com/...</span></p>
               <hr className={`border-${accent}-700 my-2`} />
