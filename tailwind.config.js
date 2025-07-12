@@ -22,6 +22,10 @@ export default {
     // Purple colors
     'bg-purple-700', 'hover:bg-purple-600', 'active:bg-purple-800', 'bg-purple-200', 'bg-purple-900', 'border-purple-700', 'text-purple-100', 'text-purple-200', 'text-purple-300', 'text-purple-400',
     'from-purple-950', 'via-purple-900', 'to-purple-700',
+    // Additional progress colors
+    'text-blue-200', 'text-blue-300', 'text-green-200', 'text-green-300', 'text-purple-200', 'text-purple-300',
+    'bg-blue-900', 'bg-green-900', 'bg-purple-900', 'bg-blue-400', 'bg-green-400', 'bg-purple-400',
+    'text-blue-100', 'text-green-100', 'text-purple-100',
   ]
 }
 
