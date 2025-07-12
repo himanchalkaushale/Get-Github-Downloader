@@ -190,6 +190,21 @@ function App() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-cursive font-normal text-white mb-10 text-center tracking-tight drop-shadow-lg animate-fadeinup whitespace-nowrap" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Get <span className="mx-2 align-middle text-3xl">&middot;</span> GitHub <span className="mx-2 align-middle text-3xl">&middot;</span> Directory
             </h1>
+            {/* Theme selector */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-white/80 text-sm">Theme:</span>
+              {ACCENT_COLORS.map(c => (
+                <button
+                  key={c.value}
+                  aria-label={c.name}
+                  className={`w-8 h-8 rounded-full border-2 ${accent === c.value ? 'border-white scale-110 ring-2 ring-white' : 'border-white/40'} transition-all hover:scale-105`}
+                  style={{ backgroundColor: `var(--tw-${c.classes.base.replace('-', '-')})` }}
+                  onClick={() => setAccent(c.value)}
+                >
+                  <span className="sr-only">{c.name}</span>
+                </button>
+              ))}
+            </div>
             <div className="w-full flex flex-col sm:flex-row items-center gap-2 mb-8">
               <input
                 type="text"

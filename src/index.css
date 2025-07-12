@@ -16,3 +16,24 @@
 .animate-fadeinup {
   animation: fadeinup 1.2s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
+
+/* Ensure color classes are available */
+.bg-blue-700 { background-color: #1d4ed8; }
+.hover\:bg-blue-600:hover { background-color: #2563eb; }
+.active\:bg-blue-800:active { background-color: #1e40af; }
+.bg-green-700 { background-color: #15803d; }
+.hover\:bg-green-600:hover { background-color: #16a34a; }
+.active\:bg-green-800:active { background-color: #166534; }
+.bg-purple-700 { background-color: #7c3aed; }
+.hover\:bg-purple-600:hover { background-color: #9333ea; }
+.active\:bg-purple-800:active { background-color: #6b21a8; }
+
+.from-blue-950 { --tw-gradient-from: #172554; }
+.via-blue-900 { --tw-gradient-via: #1e3a8a; }
+.to-blue-700 { --tw-gradient-to: #1d4ed8; }
+.from-green-950 { --tw-gradient-from: #052e16; }
+.via-green-900 { --tw-gradient-via: #14532d; }
+.to-green-700 { --tw-gradient-to: #15803d; }
+.from-purple-950 { --tw-gradient-from: #2e1065; }
+.via-purple-900 { --tw-gradient-via: #581c87; }
+.to-purple-700 { --tw-gradient-to: #7c3aed; }
