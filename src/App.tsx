@@ -66,6 +66,7 @@ function App() {
         return
       }
       setProgress('fetching')
+      await new Promise(resolve => setTimeout(resolve, 100))
       let file, startTime = Date.now()
       try {
         file = await fetchGithubFile(fileApiInfo.apiUrl)
@@ -75,6 +76,7 @@ function App() {
         return
       }
       setProgress('downloading')
+      await new Promise(resolve => setTimeout(resolve, 100))
       try {
         const res = await fetch(file.download_url)
         if (!res.ok) throw new Error('Failed to download file.')
@@ -107,6 +109,7 @@ function App() {
       return
     }
     setProgress('fetching')
+    await new Promise(resolve => setTimeout(resolve, 100))
     let files: FileInfo[]
     let startTime = Date.now()
     try {
@@ -118,6 +121,7 @@ function App() {
       return
     }
     setProgress('zipping')
+    await new Promise(resolve => setTimeout(resolve, 100))
     setZipProgress({ done: 0, total: files.length })
     let zipBlob, totalSize
     try {
@@ -132,6 +136,7 @@ function App() {
     }
     setZipProgress(null)
     setProgress('downloading')
+    await new Promise(resolve => setTimeout(resolve, 100))
     const zipName = `${apiInfo.repoRoot.replace(/\//g, '-')}.zip`
     try {
       saveAs(zipBlob, zipName)
@@ -236,9 +241,33 @@ function App() {
               </div>
             )}
 
-            {/* Progress UI (mobile only) */}
+
+            {/* Mobile progress UI (hide when summary is visible) */}
             {progress !== 'idle' && !error && progress !== 'done' && (
               <div className="block lg:hidden w-full flex flex-col items-center mt-4">
+                {(isGithubFileUrl(url) ? fileSteps : steps).map((step, idx) => (
+                  <div key={step.key} className={`flex items-center gap-2 mb-2 ${progress === step.key ? 'font-bold text-white' : 'text-white/60'}`}> 
+                    <span className="inline-block w-3 h-3 rounded-full mr-2" style={{ background: progress === step.key ? accentClasses.base === 'blue-700' ? '#60a5fa' : accentClasses.base === 'green-700' ? '#16a34a' : '#9333ea' : '#374151' }}></span>
+                    {step.label}
+                    {/* Show progress bar for zipping */}
+                    {step.key === 'zipping' && progress === 'zipping' && zipProgress && (
+                      <span className={`ml-4 w-40 h-2 bg-${accent}-900/40 rounded overflow-hidden inline-block align-middle`}>
+                        <span
+                          className={`block h-2 bg-${accent}-400 transition-all`}
+                          style={{ width: `${(zipProgress.done / zipProgress.total) * 100}%` }}
+                        ></span>
+                      </span>
+                    )}
+                    {step.key === 'zipping' && progress === 'zipping' && zipProgress && (
+                      <span className="ml-2 text-xs text-white/80">{zipProgress.done}/{zipProgress.total}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* Desktop progress UI (always show except idle/error) */}
+            {progress !== 'idle' && !error && (
+              <div className="hidden lg:block w-full flex flex-col items-center mt-4">
                 {(isGithubFileUrl(url) ? fileSteps : steps).map((step, idx) => (
                   <div key={step.key} className={`flex items-center gap-2 mb-2 ${progress === step.key ? 'font-bold text-white' : 'text-white/60'}`}> 
                     <span className="inline-block w-3 h-3 rounded-full mr-2" style={{ background: progress === step.key ? accentClasses.base === 'blue-700' ? '#60a5fa' : accentClasses.base === 'green-700' ? '#16a34a' : '#9333ea' : '#374151' }}></span>
